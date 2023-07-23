@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BMIActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_bmi_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        />
+
+
+    <!-- Use TextInputLayout to create a frame around the EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilMetricUnitWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
+        android:layout_below="@id/toolbar_bmi_activity"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <!-- EditText to enter the name -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMetricUnitWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="WEIGHT (in kg)"
+            android:inputType="numberDecimal"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilMetricUnitHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
+        android:layout_below="@id/tilMetricUnitWeight"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <!-- EditText to enter the name -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMetricUnitHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="HEIGHT (in cm)"
+            android:inputType="numberDecimal"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/llDiplayBMIResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tilMetricUnitHeight"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+
+
+        >
+        <TextView
+            android:id="@+id/tvYourBMI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Your BMI"
+
+            />
+        <TextView
+            android:id="@+id/tvBMIValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            tools:text="15.00"
+            />
+        <TextView
+            android:id="@+id/tvBMIType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="Normal"
+            />
+
+        <TextView
+            android:id="@+id/tvBMIDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            tools:text="Normal" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnCalculateUnits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_below="@+id/llDiplayBMIResult"
+        android:backgroundTint="@color/colorAccent"
+        android:text="CALCULATE"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        />
+
+
+
+
+
+
+</RelativeLayout>
