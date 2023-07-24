@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a7minutesworkout.databinding.ItemExerciseStatusBinding
+import com.example.namespace.R
+import com.example.namespace.databinding.ItemExerciseStatusBinding
 import java.util.ArrayList
 
 // TODO(Step 1 : Creating an adapter class for RecyclerView using the item designed for it and along with Exercise Model class.)
@@ -45,7 +46,7 @@ class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>?) :
 
         when {
             model.getIsSelected() ->{
-                holder.tvItem.background = ContextCompat.getDrawable(holder.itemView.context,R.drawable.item_circular_thin_color_accent_border)
+                holder.tvItem.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.item_circular_thin_color_accent_border)
                 holder.tvItem.setTextColor(Color.parseColor("#212121")) // Parse the color string, and return the corresponding color-int.
             }
             model.getIsCompleted() ->{

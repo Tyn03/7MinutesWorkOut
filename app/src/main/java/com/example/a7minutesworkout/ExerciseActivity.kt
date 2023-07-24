@@ -12,8 +12,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
-import com.example.a7minutesworkout.databinding.DialogCustomBackConfigurationBinding
+import com.example.namespace.R
+import com.example.namespace.databinding.ActivityExerciseBinding
+import com.example.namespace.databinding.DialogCustomBackConfigurationBinding
 import java.util.ArrayList
 import java.util.Locale
 
@@ -31,6 +32,12 @@ class ExerciseActivity : AppCompatActivity(),TextToSpeech.OnInitListener {
     private var currentExercisePosition = -1 // Current Position of Exercise.
 
     private var isDialogShowing = false
+
+    private var pauseOffsetExercise: Long = 0
+
+    private var isExercisePaused = false
+    private var pauseStartTime: Long = 0
+
 
 
 
@@ -56,6 +63,45 @@ class ExerciseActivity : AppCompatActivity(),TextToSpeech.OnInitListener {
             onBackPressed()
         }
 
+        binding?.btnPrevious?.setOnClickListener{
+            if(currentExercisePosition !=0){
+                exerciseList!![currentExercisePosition].setIsSelected(false)
+                currentExercisePosition--
+                exerciseList!![currentExercisePosition].setIsSelected(true)
+                pauseOffsetExercise = 0
+                exerciseAdapter!!.notifyDataSetChanged()
+                setupRestViewSecond()
+            }
+        }
+        binding?.btnNext?.setOnClickListener{
+            if (currentExercisePosition < exerciseList?.size!! - 1) {
+                exerciseList!![currentExercisePosition].setIsSelected(false)
+                exerciseList!![currentExercisePosition].setIsSelected(true)
+                pauseOffsetExercise = 0
+                exerciseAdapter?.notifyDataSetChanged()
+                setupRestView()
+            } else {
+                Toast.makeText(this, "No more exercises", Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding?.btnPause?.setOnClickListener{
+            if (isExercisePaused) {
+                // Resume the exercise
+                isExercisePaused = false
+                binding?.btnPause?.setBackgroundResource(R.drawable.play)
+                setRestProgressSecond(pauseOffsetExercise)
+            } else {
+                // Pause the exercise
+                isExercisePaused = true
+                binding?.btnPause?.setBackgroundResource(R.drawable.pause)
+                restTimer?.cancel()
+                restTimerSecond?.cancel()
+                //pauseStartTime = System.currentTimeMillis() - pauseOffsetExercise
+            }
+        }
+
+
+
         // TODO (Step 4 - Initializing the variable of Text to Speech.)
         // START
         tts = TextToSpeech(this, this)
@@ -66,6 +112,7 @@ class ExerciseActivity : AppCompatActivity(),TextToSpeech.OnInitListener {
 
         setupRestView()
         setupExerciseStatusRecyclerView()
+
 
     }
     private fun setupExerciseStatusRecyclerView(){
@@ -97,19 +144,21 @@ class ExerciseActivity : AppCompatActivity(),TextToSpeech.OnInitListener {
 
         binding?.tvUpcomingExerciseName?.visibility = View.VISIBLE
 
+        binding?.Option?.visibility = View.INVISIBLE
+
         binding?.tvUpcomingExerciseName?.text = exerciseList?.get(currentExercisePosition+1)?.getName()
 
         // This function is used to set the progress details.
-        setRestProgress()
+        setRestProgress(pauseOffsetExercise)
     }
 
-    private fun setRestProgress(){
+    private fun setRestProgress(pauseOffsetExercise : Long){
         binding?.progressBar?.progress = restProgress
-        restTimer = object : CountDownTimer(3000,1000){
+        restTimer = object : CountDownTimer(10000 - pauseOffsetExercise,1000){
             override fun onTick(p0: Long) {
                 restProgress++
-                binding?.progressBar?.progress = 3 - restProgress
-                binding?.tvTimer?.text = (3-restProgress).toString()
+                binding?.progressBar?.progress = 10 - restProgress
+                binding?.tvTimer?.text = (10-restProgress).toString()
             }
 
             override fun onFinish() {
@@ -142,22 +191,23 @@ class ExerciseActivity : AppCompatActivity(),TextToSpeech.OnInitListener {
         binding?.upcomingLabel?.visibility = View.INVISIBLE
 
         binding?.tvUpcomingExerciseName?.visibility = View.INVISIBLE
+        binding?.Option?.visibility = View.VISIBLE
 
 
         binding?.ivImage?.setImageResource(exerciseList!![currentExercisePosition].getImage())
         binding?.tvExerciseName?.text = exerciseList!![currentExercisePosition].getName()
 
         // This function is used to set the progress details.
-        setRestProgressSecond()
+        setRestProgressSecond(pauseOffsetExercise)
     }
 
-    private fun setRestProgressSecond(){
+    private fun setRestProgressSecond(pauseOffsetExercise : Long){
         binding?.progressBarExercise?.progress = restProgressSecond
-        restTimer = object : CountDownTimer(3000,1000){
+        restTimer = object : CountDownTimer(10000 - pauseOffsetExercise,1000){
             override fun onTick(p0: Long) {
                 restProgressSecond++
-                binding?.progressBarExercise?.progress = 3 - restProgressSecond
-                binding?.tvTimer2?.text = (3-restProgressSecond).toString()
+                binding?.progressBarExercise?.progress = 10 - restProgressSecond
+                binding?.tvTimer2?.text = (10-restProgressSecond).toString()
             }
 
             override fun onFinish() {

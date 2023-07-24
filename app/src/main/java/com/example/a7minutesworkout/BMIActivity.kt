@@ -3,7 +3,7 @@ package com.example.a7minutesworkout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.a7minutesworkout.databinding.ActivityBmiactivityBinding
+import com.example.namespace.databinding.ActivityBmiactivityBinding
 import java.math.BigDecimal
 import java.math.RoundingMode
 

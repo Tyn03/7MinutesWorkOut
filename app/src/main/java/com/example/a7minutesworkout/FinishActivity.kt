@@ -3,7 +3,7 @@ package com.example.a7minutesworkout
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.a7minutesworkout.databinding.ActivityFinishBinding
+import com.example.namespace.databinding.ActivityFinishBinding
 
 class FinishActivity : AppCompatActivity() {
     private var binding : ActivityFinishBinding? = null

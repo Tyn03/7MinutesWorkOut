@@ -1,4 +1,5 @@
 package com.example.a7minutesworkout
+import com.example.namespace.R
 import java.util.*
 import kotlin.collections.ArrayList
 
