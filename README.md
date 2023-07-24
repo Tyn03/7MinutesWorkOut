@@ -9,7 +9,7 @@
 - Have a Play/Pause button for each exercise.
 - Can skip and return button for the exercises.
 - Play aloud the name of the exercise.
-- BMI Calculator with 2 units system (Metrics).
+- BMI Calculator with unit system (Metrics).
 
 # Tech Stack & Open-source libraries
 - Minimum SDK level 21.
