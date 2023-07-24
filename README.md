@@ -21,6 +21,6 @@
 - [<span style="color:blue"> Navigation</span>](https://developer.android.com/guide/navigation?hl=en) - interactions that allow users to navigate across, into, and back out from the different pieces of content within your app.
 - [<span style="color:blue"> Fragment</span>](https://developer.android.com/guide/fragments?hl=en)  - represents a behavior or a portion of user interface in a FragmentActivity.
 - [<span style="color:blue"> RecyclerView</span>](https://developer.android.com/develop/ui/views/layout/recyclerview?hl=en)  - for display a scrolling list of elements based on large data sets.
--  [<span style="color:blue"> Material-Components</span>]  - Material design components.
-  - [<span style="color:blue"> Material Dialogs</span>]  - library with extensible dialogs API for Kotlin & Android.
+-  <span style="color: blue">component</span>  - Material design components.
+  - <span style="color:blue"> Material Dialogs</span>  - library with extensible dialogs API for Kotlin & Android.
 
