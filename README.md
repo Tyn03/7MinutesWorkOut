@@ -1,5 +1,3 @@
 # 7MinutesWorkOut
-### Requirements
+![_alt_text_1(https://img.shields.io/badge/Tesla-text-cc0000?style-for-the-badge&logo-Tesla)
 
-- Android API: 21+
-- Kotlin: 1.4.10
