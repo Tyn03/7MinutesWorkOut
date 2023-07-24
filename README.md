@@ -1,3 +1,3 @@
 # 7MinutesWorkOut
-![_alt_text_l(https://img.shields.io/badge/Tesla-text-cc0000?style-for-the-badge&logo-Tesla)
+![_alt_text_](https://img.shields.io/badge/kotlin-1.8.20-7F52FF?style-for-the-badge&logo=kotlin)
 
