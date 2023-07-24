@@ -23,4 +23,5 @@
 - [<span style="color:blue"> RecyclerView</span>](https://developer.android.com/develop/ui/views/layout/recyclerview?hl=en)  - for display a scrolling list of elements based on large data sets.
 -  <span style="color: blue">component</span>  - Material design components.
   - <span style="color:blue"> Material Dialogs</span>  - library with extensible dialogs API for Kotlin & Android.
-
+# Challenge
+- Time synchronization is not complete yet
